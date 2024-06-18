@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    implementation 'org.apache.poi:poi-ooxml:5.2.3' // 원하는 버전으로 변경
+    implementation 'org.apache.xmlbeans:xmlbeans:5.1.1' // 원하는 버전으로 변경
+    implementation 'org.apache.commons:commons-collections4:4.4' // 원하는 버전으로 변경
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
