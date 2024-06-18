@@ -16,6 +16,11 @@ dependencies {
     implementation 'org.apache.poi:poi-ooxml:5.2.3' // 원하는 버전으로 변경
     implementation 'org.apache.xmlbeans:xmlbeans:5.1.1' // 원하는 버전으로 변경
     implementation 'org.apache.commons:commons-collections4:4.4' // 원하는 버전으로 변경
+    // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    implementation 'com.itextpdf:kernel:7.2.3'
+    implementation 'com.itextpdf:layout:7.2.3'
+    implementation 'com.itextpdf:io:7.2.3'
+
 
 
 }
