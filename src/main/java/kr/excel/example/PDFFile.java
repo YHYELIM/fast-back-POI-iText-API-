@@ -1,9 +1,10 @@
 package kr.excel.example;
+
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -13,12 +14,15 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.UnitValue;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
+
+import static com.itextpdf.kernel.font.PdfFontFactory.*;
+
 public class PDFFile {
     public static void main(String[] args) {
         String dest = "book_table.pdf";
@@ -37,14 +41,15 @@ public class PDFFile {
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf, PageSize.A4);
 
-        // Initialize fonts
-        PdfFont headerFont = PdfFontFactory.createFont("NanumGothicLight.ttf", PdfEncodings.IDENTITY_H, true);
-        PdfFont bodyFont = PdfFontFactory.createFont("NanumGothicLight.ttf", PdfEncodings.IDENTITY_H, true);
+        // Initialize fonts (상대 경로로 변경)
+        String fontPath = "NotoSansKR-VariableFont_wght.ttf";
+        PdfFont headerFont = PdfFontFactory.createFont(fontPath);
+        PdfFont bodyFont = PdfFontFactory.createFont(fontPath);
 
         // Initialize table
         float[] columnWidths = {1, 2, 2, 2, 2, 2};
         Table table = new Table(columnWidths);
-        table.setWidth(100);
+        table.setWidth(UnitValue.createPercentValue(100));
 
         // Initialize table header cells
         table.addHeaderCell(new Cell().add(new Paragraph("순번").setFont(headerFont)));
@@ -103,7 +108,7 @@ public class PDFFile {
             book.put("publisher", scanner.nextLine());
             System.out.print("출판일(YYYY-MM-DD): ");
             book.put("publishedDate", scanner.nextLine());
-            System.out.print("썸네일 URL: ");
+            System.out.print("썸네일 파일 경로: ");
             book.put("thumbnail", scanner.nextLine());
             books.add(book);
         }

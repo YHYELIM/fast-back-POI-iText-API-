@@ -34,6 +34,10 @@ public class BookInfoToPDF {
             // Document 객체 생성
             Document document = new Document(pdf);
 
+            PdfFont font = PdfFontFactory.createFont("NotoSansKR-VariableFont_wght.ttf");
+
+            document.setFont(font);
+
 
             // 책 정보를 문단으로 생성하여 Document에 추가
             for (String key : bookInfo.keySet()) {
